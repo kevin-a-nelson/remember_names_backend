@@ -6,7 +6,7 @@ const { pool } = require('../config')
 router.get('/', function (request, response) {
     pool.query('SELECT * FROM people_groups', (error, results) => {
         if (error) {
-            return error
+            return response.status(404).json({ error: error.detail })
         }
         response.status(200).json(results.rows)
     })
@@ -25,7 +25,7 @@ router.post('/', function (request, response) {
 
     pool.query(query, body, error => {
         if (error) {
-            return error
+            return response.status(404).json({ error: error.detail })
         }
         response.status(201).json({ status: 'success', message: 'People_group added' })
     })
@@ -46,7 +46,7 @@ router.put('/:id', function (request, response) {
 
     pool.query(query, body, error => {
         if (error) {
-            return error
+            return response.status(404).json({ error: error.detail })
         }
         response.status(204).json({ stats: 'status', message: 'People_group updated' })
     })
@@ -66,7 +66,7 @@ router.delete('/:id', function (request, response) {
 
     pool.query(query, body, error => {
         if (error) {
-            return error
+            return response.status(404).json({ error: error.detail })
         }
         response.status(202).json({ status: 'success', message: 'Person_group deleted' })
     })
@@ -84,7 +84,7 @@ router.delete('/', function (request, response) {
 
     pool.query(query, body, error => {
         if (error) {
-            return error
+            return response.status(404).json({ error: error.detail })
         }
         response.status(202).json({ status: 'success', message: 'Person_group deleted' })
     })
