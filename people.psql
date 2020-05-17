@@ -1,5 +1,5 @@
 
-COPY public.people (id, title, email, majior, class_year, thumbnail, photo, country) FROM stdin;
+COPY people (id, title, email, majior, class_year, thumbnail, photo, country) FROM stdin;
 9223	Alden Aaberg	aaberg1@stolaf.edu	Political Science	2020	https://www.stolaf.edu/stofaces/face.cfm?username=aaberg1&v=E3B0C44	https://www.stolaf.edu/stofaces/face.cfm?username=aaberg1&v=E3B0C44&fullsize	United States
 9224	Josie Abbott	abbott3@stolaf.edu	Psychology	2022	https://www.stolaf.edu/stofaces/face.cfm?username=abbott3&v=E3B0C44	https://www.stolaf.edu/stofaces/face.cfm?username=abbott3&v=E3B0C44&fullsize	United States
 9225	Emma Aanestad	aanest1@stolaf.edu	Psychology	2022	https://www.stolaf.edu/stofaces/face.cfm?username=aanest1&v=E1C0632	https://www.stolaf.edu/stofaces/face.cfm?username=aanest1&v=E1C0632&fullsize	United States
