@@ -14,7 +14,6 @@ router.get('/', function (request, response) {
             throw error
             // return response.status(404).json({ error: error.detail })
         }
-        console.log(results)
         response.status(200).json(results.rows)
     })
 });
