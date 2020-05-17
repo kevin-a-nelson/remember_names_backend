@@ -1,6 +1,6 @@
 
 CREATE TABLE people (
-    id integer NOT NULL,
+    id SERIAL PRIMARY KEY,
     title character varying(255) NOT NULL,
     email character varying(255) NOT NULL,
     majior character varying(255),
@@ -10,23 +10,22 @@ CREATE TABLE people (
     country character varying(255)
 );
 
-
 CREATE TABLE people_groups (
-    id integer NOT NULL,
+    id SERIAL PRIMARY KEY,
     person_id integer NOT NULL,
     group_id integer NOT NULL
 );
 
 
 CREATE TABLE users (
-    id integer NOT NULL,
+    id SERIAL PRIMARY KEY,
     title character varying(255) NOT NULL,
     google_id character varying(255)
 );
 
 
 CREATE TABLE groups (
-    id integer NOT NULL,
+    id SERIAL PRIMARY KEY,
     title character varying(255) NOT NULL,
     user_id integer NOT NULL
 );
