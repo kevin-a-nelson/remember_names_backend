@@ -6,7 +6,7 @@ const { pool } = require('../config')
 router.get('/', function (request, response) {
 
     const query = `
-        SELECT * FROM people
+        SELECT * FROM people;
     `
 
     pool.query(query, (error, results) => {
