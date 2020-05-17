@@ -6,7 +6,7 @@ const { pool } = require('../config')
 router.get('/', function (request, response) {
     pool.query('SELECT * FROM groups', (error, results) => {
         if (error) {
-            return response.status(404).json({ error: error.detail })
+            throw error
         }
         response.status(200).json(results.rows)
     })
@@ -27,7 +27,7 @@ router.get('/user-id/:id', function (request, response) {
 
     pool.query(query, body, (error, results) => {
         if (error) {
-            return response.status(404).json({ error: error.detail })
+            throw error
         }
         response.status(200).json(results.rows)
     })
@@ -50,7 +50,7 @@ router.get('/:id/people', function (request, response) {
 
     pool.query(query, body, (error, results) => {
         if (error) {
-            return response.status(404).json({ error: error.detail })
+            throw error
         }
         response.status(200).json(results.rows)
     })
@@ -71,7 +71,7 @@ router.get('/:id', function (request, response) {
 
     pool.query(query, body, (error, results) => {
         if (error) {
-            return response.status(404).json({ error: error.detail })
+            throw error
         }
         response.status(200).json(results.rows)
     })
@@ -89,7 +89,7 @@ router.post('/', function (request, response) {
 
     pool.query(query, body, error => {
         if (error) {
-            return response.status(404).json({ error: error.detail })
+            throw error
         }
         response.status(201).json({ status: 'success', message: 'Group added' })
     })
@@ -111,7 +111,7 @@ router.put('/:id', function (request, response) {
 
     pool.query(query, body, error => {
         if (error) {
-            return response.status(404).json({ error: error.detail })
+            throw error
         }
         response.status(204).json({ stats: 'success', message: 'Group updated' })
     })
@@ -129,7 +129,7 @@ router.delete('/:id', function (request, response) {
 
     pool.query(query, body, error => {
         if (error) {
-            return response.status(404).json({ error: error.detail })
+            throw error
         }
         response.status(202).json({ status: 'success', message: 'User deleted' })
     })
