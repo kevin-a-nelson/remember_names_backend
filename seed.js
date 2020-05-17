@@ -16,13 +16,18 @@ function createPersonInDB(person) {
         : "Undecided"
 
     const country = person.homeAddress.country
+    const state = person.homeAddress.state
+
+    const dorm = person.campusLocations[0]
+        ? person.campusLocations[0].display
+        : null
 
     const query = `
-        INSERT INTO people (title, email, majior, class_year, thumbnail, photo, country)
-        VALUES ($1, $2, $3, $4, $5, $6, $7)
+        INSERT INTO people (title, email, majior, class_year, thumbnail, photo, country, state, dorm)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
     `
 
-    const body = [displayName, email, majior, classYear, thumbnail, photo, country]
+    const body = [displayName, email, majior, classYear, thumbnail, photo, country, state, dorm]
 
     pool.query(query, body, error => {
         if (error) {
@@ -32,17 +37,25 @@ function createPersonInDB(person) {
     })
 }
 
-function initStudents() {
+function createPeopleStartingWithLetter(letter) {
     fetch('https://www.stolaf.edu/directory/search?query=e&format=json')
         .then(res => res.json())
         .then(json => {
             people = json.results
             people = people.filter(person => person.classYear)
+            people = people.filter(person => person.firstName[0] === letter)
             people.forEach(person => {
                 createPersonInDB(person)
             })
-        });
+        })
 }
 
-initStudents()
+function seedPeople() {
+    const ALPHABET = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
+    ALPHABET.forEach(letter => {
+        createPeopleStartingWithLetter(letter)
+    })
+}
+
+seedPeople()
 

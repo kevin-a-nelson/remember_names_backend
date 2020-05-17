@@ -1,31 +1,42 @@
 
+
+DROP TABLE IF EXISTS people;
+DROP TABLE IF EXISTS people_groups;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS groups;
+
 CREATE TABLE people (
     id SERIAL PRIMARY KEY,
-    title character varying(255) NOT NULL,
-    email character varying(255) NOT NULL,
-    majior character varying(255),
-    class_year character varying(255),
-    thumbnail character varying(255),
-    photo character varying(255),
-    country character varying(255)
+    title VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    majior VARCHAR(255),
+    class_year VARCHAR(255),
+    thumbnail VARCHAR(255),
+    photo VARCHAR(255),
+    country VARCHAR(255),
+    state VARCHAR(255),
+    dorm VARCHAR(255),
+    UNIQUE(email)
 );
 
 CREATE TABLE people_groups (
     id SERIAL PRIMARY KEY,
     person_id integer NOT NULL,
-    group_id integer NOT NULL
+    group_id integer NOT NULL,
+    UNIQUE (person_id, group_id)
 );
-
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    title character varying(255) NOT NULL,
-    google_id character varying(255)
+    title VARCHAR(255) NOT NULL,
+    google_id VARCHAR(255),
+    UNIQUE(google_id)
 );
 
 
 CREATE TABLE groups (
     id SERIAL PRIMARY KEY,
-    title character varying(255) NOT NULL,
-    user_id integer NOT NULL
+    title VARCHAR(255) NOT NULL,
+    user_id integer NOT NULL,
+    UNIQUE(title)
 );
