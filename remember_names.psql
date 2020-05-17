@@ -1,0 +1,32 @@
+
+CREATE TABLE people (
+    id integer NOT NULL,
+    title character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    majior character varying(255),
+    class_year character varying(255),
+    thumbnail character varying(255),
+    photo character varying(255),
+    country character varying(255)
+);
+
+
+CREATE TABLE people_groups (
+    id integer NOT NULL,
+    person_id integer NOT NULL,
+    group_id integer NOT NULL
+);
+
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    title character varying(255) NOT NULL,
+    google_id character varying(255)
+);
+
+
+CREATE TABLE groups (
+    id integer NOT NULL,
+    title character varying(255) NOT NULL,
+    user_id integer NOT NULL
+);
